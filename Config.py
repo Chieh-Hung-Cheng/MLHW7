@@ -1,5 +1,5 @@
 import torch
-
+from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 
 class Config:
     # Time & Randomness
@@ -13,8 +13,8 @@ class Config:
     output_path = None
 
     # Load Models
-    load_ckpt = True
-    load_name = "05350717"
+    load_ckpt = False
+    load_name = None
 
     # Dataset / DataLoader
     train_loader = None
@@ -31,12 +31,12 @@ class Config:
     valid_cycle = 2
     warmup_steps = 10
 
-    model = None
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    criterion = torch.nn.CrossEntropyLoss()
+    model = AutoModelForQuestionAnswering.from_pretrained("bert-base-chinese").to(device)
     optimizer = None
     scheduler = None
     accelerator = None
+    tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
 
 
 

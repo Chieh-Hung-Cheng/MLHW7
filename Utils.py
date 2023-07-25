@@ -28,7 +28,7 @@ class Utils:
             os.mkdir(Config.output_path)
         if local_flag:
             # Data path on local
-            Config.data_path = r"D:\ML_Dataset\HW7\Dataset"
+            Config.data_path = r"D:\ML_Dataset\HW7"
         else:
             # Data path on Colab
             Config.data_path = None
